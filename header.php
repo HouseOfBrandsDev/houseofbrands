@@ -9,6 +9,7 @@
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 
-<?php get_template_part( 'template-parts/header/site', 'header' ); ?>
-
-<main class="site-main container">
+<?php
+// Charge le template modulaire pour le header
+get_template_part( 'template-parts/header/site', 'header' );
+?>
