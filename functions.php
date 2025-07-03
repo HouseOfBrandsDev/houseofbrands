@@ -21,11 +21,13 @@ function houseofbrands_setup() {
     add_theme_support( 'post-thumbnails' );
 
     // Register a primary menu location.
-    register_nav_menus(
-        array(
-            'primary' => esc_html__( 'Primary Menu', 'houseofbrands' ),
-        )
-    );
+register_nav_menus(
+    array(
+        'primary' => esc_html__( 'Menu principal', 'houseofbrands' ),
+        'mobile'  => esc_html__( 'Menu mobile',    'houseofbrands' ),
+    )
+);
+
 
     // Switch core markup for search form, comment form, comment list, gallery, and captions to valid HTML5.
     add_theme_support(

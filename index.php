@@ -17,8 +17,8 @@ get_header();
     <?php the_posts_pagination(
       array(
         'mid_size'  => 2,
-        'prev_text' => esc_html__( '« Précédent', 'houseofbrands' ),
-        'next_text' => esc_html__( 'Suivant »', 'houseofbrands' ),
+        'prev_text' => esc_html__( 'Précédent', 'houseofbrands' ),
+        'next_text' => esc_html__( 'Suivant', 'houseofbrands' ),
       )
     ); ?>
   <?php else : ?>
