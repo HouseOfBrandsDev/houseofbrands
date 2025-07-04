@@ -41,16 +41,6 @@ register_nav_menus(
         )
     );
 
-    // Add support for custom logo.
-    add_theme_support(
-        'custom-logo',
-        array(
-            'height'      => 250,
-            'width'       => 250,
-            'flex-width'  => true,
-            'flex-height' => true,
-        )
-    );
 }
 add_action( 'after_setup_theme', 'houseofbrands_setup' );
 
@@ -62,7 +52,7 @@ function houseofbrands_widgets_init() {
         array(
             'name'          => esc_html__( 'Sidebar', 'houseofbrands' ),
             'id'            => 'sidebar-1',
-            'description'   => esc_html__( 'Add widgets here.', 'houseofbrands' ),
+            'description'   => esc_html__( 'Ajoutez vos widgets ici.', 'houseofbrands' ),
             'before_widget' => '<section id="%1$s" class="widget %2$s">',
             'after_widget'  => '</section>',
             'before_title'  => '<h2 class="widget-title">',
