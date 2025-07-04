@@ -1,134 +1,278 @@
+/* main.css — Styles de base pour House Of Brands */
 
-/*
- * Basic Reset
- */
-* {
+/* ------------------------------------------
+   Reset & Box sizing
+------------------------------------------ */
+*, *::before, *::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
-/*
- * CSS Variables
- */
-:root {
-  /* Colors */
-  --color-bg: #ffffff;
-  --color-text: #222222;
-  --color-primary: #000000;
-  --color-link: var(--color-primary);
-  --color-link-hover: #555555;
-
-  /* Typography */
-  --font-sans: 'Helvetica Neue', Arial, sans-serif;
-  --font-serif: 'Playfair Display', serif;
-  --font-base-size: 16px;
-  --line-height: 1.6;
-
-  /* Spacing */
-  --spacing-unit: 1rem;
-}
-
-/*
- * Base Styles
- */
+/* ------------------------------------------
+   Typographie & Base
+------------------------------------------ */
 html {
-  font-size: var(--font-base-size);
-  scroll-behavior: smooth;
+  font-size: 16px;
+  line-height: 1.5;
 }
 
 body {
-  background-color: var(--color-bg);
-  color: var(--color-text);
-  font-family: var(--font-sans);
-  line-height: var(--line-height);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: Arial, sans-serif;
+  color: #222;
+  background-color: #fff;
 }
 
-a {
-  color: var(--color-link);
-  text-decoration: none;
+/* On ajuste la taille de base pour un typographie fluide */
+
+@media (min-width: 150px) {
+  html { font-size: 13.5px; }
+}
+@media (min-width: 300px) {
+  html { font-size: 13.9px; }
+}
+@media (min-width: 450px) {
+  html { font-size: 14.3px; }
+}
+@media (min-width: 600px) {
+  html { font-size: 14.5px; }
+}
+@media (min-width: 750px) {
+  html { font-size: 15.1px; }
+}
+@media (min-width: 900px) {
+  html { font-size: 15.3px; }
+}
+@media (min-width: 1050px) {
+  html { font-size: 15.6px; }
+}
+@media (min-width: 1200px) {
+  html { font-size: 15.9px; }
+}
+@media (min-width: 1350px) {
+  html { font-size: 16.1px; }
+}
+@media (min-width: 1500px) {
+  html { font-size: 16.4px; }
+}
+@media (min-width: 1650px) {
+  html { font-size: 16.7px; }
+}
+@media (min-width: 1800px) {
+  html { font-size: 16.9px; }
+}
+@media (min-width: 1950px) {
+  html { font-size: 17.2px; }
+}
+@media (min-width: 2100px) {
+  html { font-size: 17.5px; }
+}
+@media (min-width: 2250px) {
+  html { font-size: 17.7px; }
+}
+@media (min-width: 2400px) {
+  html { font-size: 18.0px; }
 }
 
-a:hover,
-a:focus {
-  color: var(--color-link-hover);
+
+
+/* ------------------------------------------
+   Conteneur Principal
+------------------------------------------ */
+.hob-container {
+  width: 100%;
+  margin: 0 auto;
 }
 
-/*
- * Layout
- */
-.container {
-  width: 90%;
+#primary.site-main {
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: var(--spacing-unit) 0;
+  padding: 2rem 0;
 }
 
-/* Header
- */
-.site-header {
-  background: var(--color-bg);
-  border-bottom: 1px solid #eaeaea;
-  padding: var(--spacing-unit) 0;
-}
-.site-logo {
-  font-family: var(--font-serif);
-  font-size: 1.75rem;
-  color: var(--color-primary);
-}
-.site-navigation {
-  margin-top: var(--spacing-unit);
-}
-.site-navigation ul {
-  list-style: none;
-  display: flex;
-  gap: var(--spacing-unit);
+#primary.site-main.site-main--fullwidth {
+    width: 100%;
+    max-width: none;
+    margin: 0 auto;
+    padding: 2rem 0;
 }
 
-.site-navigation a {
-  text-transform: uppercase;
-  font-weight: 500;
-  letter-spacing: 0.05em;
+.hob-page-content {
+  padding: 0;
 }
 
-/* Content
- */
-.entry-title {
-  font-family: var(--font-serif);
+/* ------------------------------------------
+   Titres
+------------------------------------------ */
+.hob-page-title {
   font-size: 2rem;
-  margin-bottom: var(--spacing-unit);
-}
-.entry-content p {
-  margin-bottom: var(--spacing-unit);
+  margin-bottom: 1rem;
+  color: #000;
 }
 
-/* Footer */
-.site-footer {
-  background: #f9f9f9;
-  border-top: 1px solid #eaeaea;
-  padding: var(--spacing-unit) 0;
+.hob-page-body h1, .hob-page-body .wp-block-heading[role="heading"] {
+  font-size: 2rem;
+  margin: 1.5rem 0 1rem;
+}
+
+.hob-page-body h2 {
+  font-size: 1.75rem;
+  margin: 1.25rem 0 0.75rem;
+}
+
+.hob-page-body h3 {
+  font-size: 1.5rem;
+  margin: 1rem 0 0.5rem;
+}
+
+.hob-page-body h4 {
+  font-size: 1.25rem;
+  margin: 0.75rem 0 0.5rem;
+}
+
+.hob-page-body h5 {
+  font-size: 1rem;
+  margin: 0.5rem 0 0.25rem;
+}
+
+.hob-page-body h6 {
   font-size: 0.875rem;
-  text-align: center;
-}
-.site-footer a {
-  color: var(--color-text);
+  margin: 0.5rem 0 0.25rem;
+  color: #555;
 }
 
-/* Utility Classes
- */
-.u-text-center {
-  text-align: center;
-}
-.u-mb {
-  margin-bottom: var(--spacing-unit);
+/* ------------------------------------------
+   Paragraphes & Liens
+------------------------------------------ */
+.hob-page-body p {
+  margin: 1rem 0;
+  color: #333;
 }
 
-/* Responsive helpers */
+.hob-page-body a {
+  color: #000;
+  text-decoration: underline;
+}
+.hob-page-body a:hover {
+  color: #555;
+}
+
+/* ------------------------------------------
+   Images & Figures
+------------------------------------------ */
+.wp-block-image img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1rem 0;
+}
+
+/* ------------------------------------------
+   Citations
+------------------------------------------ */
+.wp-block-quote {
+  border-left: 4px solid #ccc;
+  padding-left: 1rem;
+  margin: 1rem 0;
+  color: #555;
+  font-style: italic;
+}
+
+/* ------------------------------------------
+   Listes
+------------------------------------------ */
+.wp-block-list {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.wp-block-list--disc li {
+  list-style-type: disc;
+}
+
+.wp-block-list--numbered li {
+  list-style-type: decimal;
+}
+
+/* ------------------------------------------
+   Tableaux
+------------------------------------------ */
+.wp-block-table table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+.wp-block-table th,
+.wp-block-table td {
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+/* ------------------------------------------
+   Boutons
+------------------------------------------ */
+.hob-button {
+    display: inline-block;
+    padding: 0.8rem 3rem;
+    border: 1px solid #000;
+    background: #000000;
+    color: #ffffff;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 1rem;
+    line-height: 1;
+    transition: color .4s ease, background .4s ease;
+}
+
+.hob-button--secondary {
+  border-color: #000000;
+  color: #000000;
+  background: transparent;
+}
+
+
+.hob-button:hover {
+  background: #f0f0f0;
+    color: #000;
+    transition: color .4s ease, background .4s ease;
+}
+
+/* ------------------------------------------
+   Formulaires
+------------------------------------------ */
+.hob-form {
+  margin: 1rem 0;
+}
+
+.hob-label {
+  display: block;
+  margin: 0.5rem 0 0.25rem;
+  font-weight: bold;
+}
+
+.hob-input,
+.hob-textarea {
+  width: 100%;
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.hob-input:focus,
+.hob-textarea:focus {
+  outline: none;
+  border-color: #000;
+}
+
+/* ------------------------------------------
+   Responsive
+------------------------------------------ */
 @media (max-width: 768px) {
-  .site-navigation ul {
-    flex-direction: column;
-    gap: 0.5rem;
+  #primary.site-main {
+    padding: 1rem 0;
   }
 }
