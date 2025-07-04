@@ -1,77 +1,84 @@
 <?php
 /**
- * The template for displaying comments
+ * Template des commentaires
  *
- * This is the template that displays the area of the page that contains both the current comments
- * and the comment form.
+ * Affiche la zone de commentaires et le formulaire de commentaire
  *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
- * @package _s
+ * @package HouseOfBrands
  */
 
-/*
- * If the current post is protected by a password and
- * the visitor has not yet entered the password we will
- * return early without loading the comments.
- */
+// Si l’article est protégé par mot de passe et que l’utilisateur ne l’a pas saisi, on ne charge pas les commentaires
 if ( post_password_required() ) {
-	return;
+    return;
 }
 ?>
 
 <div id="comments" class="comments-area">
 
-	<?php
-	// You can start editing here -- including this comment!
-	if ( have_comments() ) :
-		?>
-		<h2 class="comments-title">
-			<?php
-			$_s_comment_count = get_comments_number();
-			if ( '1' === $_s_comment_count ) {
-				printf(
-					/* translators: 1: title. */
-					esc_html__( 'One thought on &ldquo;%1$s&rdquo;', '_s' ),
-					'<span>' . wp_kses_post( get_the_title() ) . '</span>'
-				);
-			} else {
-				printf( 
-					/* translators: 1: comment count number, 2: title. */
-					esc_html( _nx( '%1$s thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', $_s_comment_count, 'comments title', '_s' ) ),
-					number_format_i18n( $_s_comment_count ), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-					'<span>' . wp_kses_post( get_the_title() ) . '</span>'
-				);
-			}
-			?>
-		</h2><!-- .comments-title -->
+    <?php if ( have_comments() ) : ?>
 
-		<?php the_comments_navigation(); ?>
+        <h2 class="comments-title">
+            <?php
+            $nombre_commentaires = get_comments_number();
+            if ( 1 === $nombre_commentaires ) {
+                /* traducteurs : %s = titre de l’article */
+                printf(
+                    esc_html__( 'Un commentaire sur « %s »', 'houseofbrands' ),
+                    '<span>' . get_the_title() . '</span>'
+                );
+            } else {
+                /* traducteurs : %1$s = nombre de commentaires, 2: titre de l’article */
+                printf(
+                    esc_html( _nx(
+                        '%1$s commentaire sur « %2$s »',
+                        '%1$s commentaires sur « %2$s »',
+                        $nombre_commentaires,
+                        'titre des commentaires',
+                        'houseofbrands'
+                    ) ),
+                    number_format_i18n( $nombre_commentaires ),
+                    '<span>' . get_the_title() . '</span>'
+                );
+            }
+            ?>
+        </h2>
 
-		<ol class="comment-list">
-			<?php
-			wp_list_comments(
-				array(
-					'style'      => 'ol',
-					'short_ping' => true,
-				)
-			);
-			?>
-		</ol><!-- .comment-list -->
+        <?php
+        // Navigation entre les pages de commentaires
+        the_comments_navigation();
+        ?>
 
-		<?php
-		the_comments_navigation();
+        <ol class="comment-list">
+            <?php
+            // Affiche la liste des commentaires
+            wp_list_comments(
+                array(
+                    'style'      => 'ol',
+                    'short_ping' => true,
+                )
+            );
+            ?>
+        </ol>
 
-		// If comments are closed and there are comments, let's leave a little note, shall we?
-		if ( ! comments_open() ) :
-			?>
-			<p class="no-comments"><?php esc_html_e( 'Comments are closed.', '_s' ); ?></p>
-			<?php
-		endif;
+        <?php
+        // Navigation après la liste de commentaires
+        the_comments_navigation();
 
-	endif; // Check for have_comments().
+        // Si les commentaires sont fermés
+        if ( ! comments_open() ) :
+            ?>
+            <p class="no-comments"><?php esc_html_e( 'Les commentaires sont fermés.', 'houseofbrands' ); ?></p>
+            <?php
+        endif;
 
-	comment_form();
-	?>
+    endif; // have_comments()
+
+    // Formulaire de commentaire
+    comment_form(
+        array(
+            'title_reply' => esc_html__( 'Laissez un commentaire', 'houseofbrands' ),
+        )
+    );
+    ?>
 
 </div><!-- #comments -->

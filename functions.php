@@ -97,4 +97,4 @@ function houseofbrands_preload_main_css() {
     // fallback pour les navigateurs sans support preload
     echo '<noscript><link rel="stylesheet" href="' . esc_url( $href ) . '"></noscript>' . "\n";
 }
-add_action( 'wp_head', 'houseofbrands_preload_main_css', 5 );
+add_action( 'wp_head', 'houseofbrands_preload_main_css', 5 );   

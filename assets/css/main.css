@@ -86,8 +86,7 @@ a:focus {
   display: flex;
   gap: var(--spacing-unit);
 }
-.site-navigation li {
-}
+
 .site-navigation a {
   text-transform: uppercase;
   font-weight: 500;
