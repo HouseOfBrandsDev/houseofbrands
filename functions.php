@@ -1,35 +1,37 @@
 <?php
 /**
- * House Of Brands functions and definitions
+ * Fonctions et définitions du thème House Of Brands
  *
  * @package HouseOfBrands
  */
 
-// Define theme version.
+// Définition de la version du thème (pour le cache busting)
 if ( ! defined( 'HOUSEOFBANDS_VERSION' ) ) {
     define( 'HOUSEOFBANDS_VERSION', '1.0.0' );
 }
 
+// Chargement du script de nettoyage du cœur WordPress
+require get_template_directory() . '/includes/cleanup.php';
+
 /**
- * Sets up theme defaults and registers support for various WordPress features.
+ * Initialisation du thème et prise en charge des fonctionnalités
  */
 function houseofbrands_setup() {
-    // Let WordPress manage the document title.
+    // Autorise WordPress à gérer automatiquement la balise <title>
     add_theme_support( 'title-tag' );
 
-    // Enable support for Post Thumbnails on posts and pages.
+    // Active la prise en charge des images mises en avant (featured images)
     add_theme_support( 'post-thumbnails' );
 
-    // Register a primary menu location.
-register_nav_menus(
-    array(
-        'primary' => esc_html__( 'Menu principal', 'houseofbrands' ),
-        'mobile'  => esc_html__( 'Menu mobile',    'houseofbrands' ),
-    )
-);
+    // Enregistrement des emplacements de menus
+    register_nav_menus(
+        array(
+            'primary' => esc_html__( 'Menu principal', 'houseofbrands' ),
+            'mobile'  => esc_html__( 'Menu mobile', 'houseofbrands' ),
+        )
+    );
 
-
-    // Switch core markup for search form, comment form, comment list, gallery, and captions to valid HTML5.
+    // Passe certains éléments (formulaires, listes, galeries) en balisage HTML5
     add_theme_support(
         'html5',
         array(
@@ -40,12 +42,11 @@ register_nav_menus(
             'caption',
         )
     );
-
 }
 add_action( 'after_setup_theme', 'houseofbrands_setup' );
 
 /**
- * Register widget area (sidebar).
+ * Déclaration et configuration de la sidebar (zone de widgets)
  */
 function houseofbrands_widgets_init() {
     register_sidebar(
@@ -63,10 +64,24 @@ function houseofbrands_widgets_init() {
 add_action( 'widgets_init', 'houseofbrands_widgets_init' );
 
 /**
- * Enqueue theme styles and scripts.
+ * Chargement des styles et scripts du thème
  */
 function houseofbrands_scripts() {
-    // Main stylesheet.
-    wp_enqueue_style( 'houseofbrands-style', get_stylesheet_uri(), array(), HOUSEOFBANDS_VERSION );
+    // Feuille de style principale
+    wp_enqueue_style(
+        'houseofbrands-style',
+        get_stylesheet_uri(),
+        array(),
+        HOUSEOFBANDS_VERSION
+    );
+
+    // Exemple pour ajouter un fichier JavaScript :
+    // wp_enqueue_script(
+    //     'houseofbrands-app',
+    //     get_template_directory_uri() . '/assets/js/app.js',
+    //     array(),
+    //     HOUSEOFBANDS_VERSION,
+    //     true
+    // );
 }
 add_action( 'wp_enqueue_scripts', 'houseofbrands_scripts' );
