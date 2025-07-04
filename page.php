@@ -8,14 +8,15 @@
 get_header();
 ?>
 
-<main class="site-main container">
-  <?php
-  while ( have_posts() ) :
-    the_post();
-    get_template_part( 'template-parts/content/content' );
-  endwhile;
-  ?>
-</main>
+  <main id="primary" class="site-main">
+    <?php
+    if ( have_posts() ) :
+      while ( have_posts() ) : the_post();
+        get_template_part( 'template-parts/content/content', 'page' );
+      endwhile;
+    endif;
+    ?>
+  </main>
 
 <?php
 get_footer();

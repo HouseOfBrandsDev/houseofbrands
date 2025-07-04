@@ -12,6 +12,8 @@ if ( ! defined( 'HOUSEOFBANDS_VERSION' ) ) {
 
 // Inclusion du script de nettoyage du cœur WordPress
 require get_template_directory() . '/includes/cleanup.php';
+// Inclut le fichier contenant les SVG
+require get_template_directory() . '/includes/svg-icons.php';
 
 /**
  * Initialisation du thème et activation des fonctionnalités
@@ -81,5 +83,36 @@ function houseofbrands_preload_main_css() {
     echo '<noscript><link rel="stylesheet" href="' . esc_url( $href ) . '"></noscript>' . "\n";
 }
 add_action( 'wp_head', 'houseofbrands_preload_main_css', 2 );   
+
+/**Enqueue header (Critical) */
+function hob_enqueue_header_style() {
+    wp_enqueue_style(
+        'hob-header-style',
+        get_template_directory_uri() . '/assets/css/header.css',
+        [],
+        filemtime( get_template_directory() . '/assets/css/header.css' )
+    );
+}
+add_action( 'wp_enqueue_scripts', 'hob_enqueue_header_style', 20 );
+
+// Chargement des polices locales
+function hob_enqueue_fonts() {
+    wp_enqueue_style(
+        'hob-fonts',
+        get_template_directory_uri() . '/assets/css/fonts.css',
+        [],
+        filemtime( get_template_directory() . '/assets/css/fonts.css' )
+    );
+}
+add_action( 'wp_enqueue_scripts', 'hob_enqueue_fonts', 5 );
+
+function hob_preload_fonts() {
+    $base = get_template_directory_uri() . '/assets/fonts/';
+    echo '<link rel="preload" href="' . $base . 'montserrat-v30-latin-regular.woff2" as="font" type="font/woff2" crossorigin>' . "\n";
+    echo '<link rel="preload" href="' . $base . 'montserrat-v30-latin-700.woff2" as="font" type="font/woff2" crossorigin>' . "\n";
+}
+add_action( 'wp_head', 'hob_preload_fonts', 1 );
+
+
 
 

@@ -1,0 +1,185 @@
+/* ------------------------------------------
+   TOP HEADER (barre supérieure)
+------------------------------------------ */
+.hob-top-header {
+  background-color: #f5f5f5;
+  font-size: 0.875rem;
+  color: #333;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.hob-top-header__inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hob-top-header__message {
+  margin: 0;
+  text-align: center;
+}
+
+/* ------------------------------------------
+   HEADER PRINCIPAL
+------------------------------------------ */
+.hob-header {
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
+  padding: 1rem 0;
+  position: relative;
+  z-index: 100;
+}
+
+.hob-header__inner {
+
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Logo */
+.hob-header__logo img {
+  height: 40px;
+  width: auto;
+}
+
+.hob-site-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #000;
+  text-decoration: none;
+}
+
+/* Navigation */
+.hob-header__nav .hob-menu {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+
+.hob-header {
+  position: relative;
+  background: #fff;
+  padding: 1rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.hob-header__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.hob-header__logo,
+.hob-header__icons {
+  z-index: 2;
+}
+
+.hob-header__nav {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.hob-header__nav .menu {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+}
+
+
+.hob-header__nav .hob-menu li {
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+.hob-header__nav .hob-menu a {
+  text-decoration: none;
+  color: #111;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+}
+
+.hob-header__nav .hob-menu a:hover {
+  color: #555;
+}
+
+/* Extras (icônes) */
+.hob-header__extras {
+
+  display: flex;
+  gap: 1rem;
+}
+.hob-header__extras span {
+    display: contents;
+    position: relative;
+    padding: 0.25rem 0.5rem;
+}
+.hob-header__right-area {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* espace entre les éléments */
+}
+
+/* Icônes */
+.hob-header__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.hob-header__extras {
+    fill: #434343;
+}
+
+
+/* Bouton burger (toggle menu mobile) */
+.hob-menu-toggle {
+  display: none; /* masqué par défaut */
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  transition: opacity 0.3s ease;
+}
+
+
+/* ------------------------------------------
+   Responsive
+------------------------------------------ */
+@media (max-width: 768px) {
+
+
+}
+
+
+
+
+/* Affiche le bouton menu uniquement sur mobile */
+@media (max-width: 1024px) {
+  .hob-menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hob-header__nav {
+display: none;
+}
+}

@@ -18,9 +18,15 @@ html {
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: Montserrat, sans-serif;
   color: #222;
   background-color: #fff;
+}
+
+.hob-icon {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
 }
 
 /* On ajuste la taille de base pour un typographie fluide */
@@ -103,6 +109,22 @@ body {
 }
 
 /* ------------------------------------------
+   Conteneur Principal
+------------------------------------------ */
+
+.hob-sub-section {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+.hob-sub-section.hob-sub-section--fullwidth {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+
+/* ------------------------------------------
    Titres
 ------------------------------------------ */
 .hob-page-title {
@@ -152,7 +174,7 @@ body {
 
 .hob-page-body a {
   color: #000;
-  text-decoration: underline;
+  text-decoration: none;
 }
 .hob-page-body a:hover {
   color: #555;
@@ -215,6 +237,7 @@ body {
    Boutons
 ------------------------------------------ */
 .hob-button {
+    font-family: Montserrat, sans-serif;
     display: inline-block;
     padding: 0.8rem 3rem;
     border: 1px solid #000;
@@ -275,4 +298,19 @@ body {
   #primary.site-main {
     padding: 1rem 0;
   }
+
+  #primary.site-main.site-main--fullwidth {
+    max-width: 90%;
+}
+.hob-sub-section {
+  padding: 0;
+}
+
+}
+
+@media (max-width: 1350px) {
+
+  #primary.site-main {
+    max-width: 90%;
+}
 }
