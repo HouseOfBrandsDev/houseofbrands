@@ -21,7 +21,8 @@ get_header(); ?>
       the_post();
 
       // Utilise le template de contenu standard
-      get_template_part( 'template-parts/content/content' );
+      get_template_part( 'template-parts/blog/blog', 'content' );
+
 
     endwhile;
 
@@ -31,7 +32,8 @@ get_header(); ?>
   else :
 
     // Aucun article trouvé
-    get_template_part( 'template-parts/content/content', 'none' );
+    get_template_part( 'template-parts/blog/blog', 'content-none' );
+
 
   endif;
   ?>
