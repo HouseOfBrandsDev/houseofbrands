@@ -27,7 +27,7 @@ get_header();
     <?php
     /* Boucle principale pour afficher chaque résultat */
     while ( have_posts() ) : the_post();
-      get_template_part( 'template-parts/content/content', 'search' );
+          get_template_part( 'template-parts/blog/blog', 'content' );
     endwhile;
 
     /* Navigation entre les pages de résultats */
@@ -43,7 +43,7 @@ get_header();
 
     <?php
     /* Si aucun résultat n'est trouvé, affiche le template “aucun contenu” */
-    get_template_part( 'template-parts/content/content', 'none' );
+    get_template_part( 'template-parts/blog/blog', 'content-none' );
     ?>
 
   <?php endif; ?>

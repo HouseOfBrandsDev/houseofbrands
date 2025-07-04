@@ -14,7 +14,7 @@ get_header();
     the_post();
 
     // Affiche le contenu via template-parts/content/content.php
-    get_template_part( 'template-parts/content/content' );
+    get_template_part( 'template-parts/blog/blog', 'content' );
 
     // Affiche la zone de commentaires si activée
     if ( comments_open() || get_comments_number() ) {
