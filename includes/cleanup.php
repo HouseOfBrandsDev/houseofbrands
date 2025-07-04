@@ -20,35 +20,24 @@ add_filter( 'wp_resource_hints', function( $hints, $relation_type ) {
     return $hints;
 }, 10, 2 );
 
-// Supprime les balises REST API et oEmbed dans le head
-remove_action( 'wp_head', 'rest_output_link_wp_head', 10 );
-remove_action( 'wp_head', 'wp_oembed_add_discovery_links', 10 );
-
-// Supprime le JS d’hébergement oEmbed
-remove_action( 'wp_head', 'wp_oembed_add_host_js' );
-remove_action( 'wp_footer', 'wp_oembed_add_host_js' );
-
-// Désactive entièrement les embeds WordPress
-add_filter( 'embed_oembed_discover', '__return_false' );
-add_filter( 'rest_endpoints', function( $endpoints ) {
-    if ( isset( $endpoints['/oembed/1.0/embed'] ) ) {
-        unset( $endpoints['/oembed/1.0/embed'] );
-    }
-    return $endpoints;
-});
-
 // Supprime divers liens et meta inutiles dans le head
-remove_action( 'wp_head', 'rsd_link' );                // Lien Really Simple Discovery
-remove_action( 'wp_head', 'wlwmanifest_link' );        // Lien Windows Live Writer
-remove_action( 'wp_head', 'wp_generator' );            // Version WordPress
-remove_action( 'wp_head', 'wp_shortlink_wp_head' );    // Shortlink
+remove_action( 'wp_head', 'rsd_link' ); // Really Simple Discovery
+remove_action( 'wp_head', 'wlwmanifest_link' ); // Windows Live Writer
+remove_action( 'wp_head', 'wp_generator' ); // Version WordPress
+remove_action( 'wp_head', 'wp_shortlink_wp_head' ); // Shortlink
 remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10 );
 
 // Désactive XML-RPC
 add_filter( 'xmlrpc_enabled', '__return_false' );
 
+// Supprime les balises REST API et oEmbed
+remove_action( 'wp_head', 'rest_output_link_wp_head', 10 );
+remove_action( 'wp_head', 'wp_oembed_add_discovery_links', 10 );
+remove_action( 'wp_head', 'wp_oembed_add_host_js' );
+remove_action( 'wp_footer', 'wp_oembed_add_host_js' );
+add_filter( 'embed_oembed_discover', '__return_false' );
 
-// Désinscrit tous les widgets par défaut (archives, catégories, etc.)
+// Désinscrit tous les widgets par défaut
 function hob_supprime_widgets_par_defaut() {
     $widgets = [
         'WP_Widget_Archives',
@@ -69,7 +58,7 @@ function hob_supprime_widgets_par_defaut() {
 }
 add_action( 'widgets_init', 'hob_supprime_widgets_par_defaut', 11 );
 
-// Retire les styles de la bibliothèque de blocs Gutenberg en front-end
+// Retire les styles de la bibliothèque de blocs Gutenberg
 function hob_retire_styles_gutenberg() {
     wp_dequeue_style( 'wp-block-library' );
     wp_dequeue_style( 'wp-block-library-theme' );
@@ -86,7 +75,31 @@ add_filter( 'wp_get_attachment_image_attributes', function( $attr ) {
     return $attr;
 });
 
-// Ajoute loading="lazy" aux iframes (YouTube, vidéos intégrées)
+// Ajoute loading="lazy" aux iframes intégrés
 add_filter( 'embed_oembed_html', function( $html ) {
     return str_replace( '<iframe', '<iframe loading="lazy"', $html );
 });
+
+// ------------------------------------------
+// Désactive les Global Styles WordPress (theme.json)
+// ------------------------------------------
+// Retire l'enqueue des styles globaux et l'injection inline
+remove_action( 'wp_enqueue_scripts', 'wp_enqueue_global_styles' );
+remove_action( 'wp_head', 'wp_print_global_styles', 1 );
+// Désactive le support des styles de bloc et des éditeurs de styles
+add_action( 'after_setup_theme', function() {
+    remove_theme_support( 'wp-block-styles' );
+    remove_theme_support( 'editor-styles' );
+}, 20 );
+
+
+// ------------------------------------------
+// Retire les styles inline et classiques générés par le core WordPress
+// (boutons, fichiers, etc. pour l’éditeur de blocs)
+add_action( 'wp_enqueue_scripts', function() {
+    // Défile le CSS classique et son inline
+    wp_dequeue_style( 'classic-theme-styles' );
+    wp_dequeue_style( 'classic-theme-styles-inline' );
+}, 200 );
+
+
