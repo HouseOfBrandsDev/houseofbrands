@@ -39,23 +39,6 @@ function houseofbrands_setup() {
 }
 add_action( 'after_setup_theme', 'houseofbrands_setup' );
 
-/**
- * Déclaration de la sidebar (zone de widgets)
- */
-function houseofbrands_widgets_init() {
-    register_sidebar(
-        array(
-            'name'          => esc_html__( 'Sidebar', 'houseofbrands' ),
-            'id'            => 'sidebar-1',
-            'description'   => esc_html__( 'Ajoutez vos widgets ici.', 'houseofbrands' ),
-            'before_widget' => '<section id="%1$s" class="widget %2$s">',
-            'after_widget'  => '</section>',
-            'before_title'  => '<h2 class="widget-title">',
-            'after_title'   => '</h2>',
-        )
-    );
-}
-add_action( 'widgets_init', 'houseofbrands_widgets_init' );
 
 /**
  * Chargement du Critical CSS en inline dans le <head>
@@ -98,3 +81,5 @@ function houseofbrands_preload_main_css() {
     echo '<noscript><link rel="stylesheet" href="' . esc_url( $href ) . '"></noscript>' . "\n";
 }
 add_action( 'wp_head', 'houseofbrands_preload_main_css', 2 );   
+
+

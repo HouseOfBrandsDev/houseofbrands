@@ -12,6 +12,35 @@ remove_action( 'wp_print_styles', 'print_emoji_styles' );
 remove_action( 'admin_print_styles', 'print_emoji_styles' );
 add_filter( 'emoji_svg_url', '__return_false' );
 
+
+// 1. Désactiver les fonctionnalités FSE et patterns au niveau du thème
+add_action('after_setup_theme', function() {
+    // Désactive la prise en charge des templates FSE (Full Site Editing) dans le thème
+    remove_theme_support('block-templates');         // Désactive l’éditeur de template (WP 5.8+ opt-out):contentReference[oaicite:2]{index=2}
+    remove_theme_support('block-template-parts');    // Désactive la prise en charge des template parts (si ajouté par thème)
+    remove_theme_support('core-block-patterns');     // Désactive les block patterns fournis par WP Core:contentReference[oaicite:3]{index=3}
+});
+
+// 2. Retirer le menu Apparence > Compositions (Patterns) de l’admin
+add_action('admin_menu', function() {
+    // Selon la version de WP, le slug du menu peut varier :
+    remove_submenu_page('themes.php', 'site-editor.php?p=/pattern');    // WP 6.5+ (paramètre 'p')
+    remove_submenu_page('themes.php', 'site-editor.php?path=/patterns'); // WP 6.3/6.4 (paramètre 'path'):contentReference[oaicite:4]{index=4}
+    remove_submenu_page('themes.php', 'edit.php?post_type=wp_block');   // WP <6.3 (menu Reusable Blocks)
+}, 100);
+
+// 3. Bloquer tout accès direct à l’éditeur de site
+add_action('admin_init', function() {
+    global $pagenow;
+    if ($pagenow === 'site-editor.php') {
+        // Redirige vers le tableau de bord (ou afficher une erreur 404 personnalisée)
+        wp_safe_redirect(admin_url());
+        exit;
+    }
+});
+
+
+
 // Retire le DNS prefetch pour les emojis
 add_filter( 'wp_resource_hints', function( $hints, $relation_type ) {
     if ( 'dns-prefetch' === $relation_type ) {
@@ -101,5 +130,4 @@ add_action( 'wp_enqueue_scripts', function() {
     wp_dequeue_style( 'classic-theme-styles' );
     wp_dequeue_style( 'classic-theme-styles-inline' );
 }, 200 );
-
 

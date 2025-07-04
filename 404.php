@@ -23,36 +23,11 @@ get_header();
 
         <div class="page-content">
             <p>
-                <?php esc_html_e( 'Il semble que rien n’ait été trouvé à cet endroit. Peut-être essayer une recherche ?', 'houseofbrands' ); ?>
+                <?php esc_html_e( 'Il semble que rien n’ait été trouvé à cet endroit.', 'houseofbrands' ); ?>
             </p>
 
-            <?php
-            // Formulaire de recherche
-            get_search_form();
-
-            // Widget : articles récents
-            the_widget( 'WP_Widget_Recent_Posts' );
-            ?>
-
-            <div class="widget widget_categories">
-                <h2 class="widget-title">
-                    <?php esc_html_e( 'Catégories les plus utilisées', 'houseofbrands' ); ?>
-                </h2>
-                <ul>
-                    <?php
-                    wp_list_categories(
-                        array(
-                            'orderby'    => 'count',
-                            'order'      => 'DESC',
-                            'show_count' => 1,
-                            'title_li'   => '',
-                            'number'     => 10,
-                        )
-                    );
-                    ?>
-                </ul>
-            </div><!-- .widget_categories -->
-
+           
+     
 
         </div><!-- .page-content -->
 
