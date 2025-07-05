@@ -15,11 +15,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if ( isOpen ) {
       // ===== FERME LE MENU =====
-      container.innerHTML             = '';
       container.setAttribute('aria-hidden', 'true');
       btn.setAttribute('aria-expanded', 'false');
       container.classList.remove('mobile-menu-opened');
       body.classList.remove('mobile-menu-opened');
+            // on vide après un petit délai pour laisser l'animation se terminer
+      setTimeout(() => {
+        container.innerHTML = '';
+      }, 450);
 
     } else {
       // ===== OUVRE LE MENU =====
@@ -32,20 +35,19 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-
-document.addEventListener('DOMContentLoaded', function() {
+// Gestion ouverture tiroir du menu mobile
+document.addEventListener('DOMContentLoaded', () => {
   const container = document.getElementById('hob-mobile-menu-container');
   const header    = document.querySelector('.hob-header');
-
   if (!container || !header) return;
 
-  // Met à jour la variable CSS --hob-header-height
+  // Met à jour la variable CSS --hob-header-height sur le container
   function updateHeaderHeight() {
-    const height = header.getBoundingClientRect().height;
-    container.style.setProperty('--hob-header-height', height + 'px');
+    const h = header.getBoundingClientRect().height;
+    container.style.setProperty('--hob-header-height', h + 'px');
   }
 
-  // Initial + sur redimensionnement
+  // Initial + recalcul au redimensionnement
   updateHeaderHeight();
   window.addEventListener('resize', updateHeaderHeight);
 });
