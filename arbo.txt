@@ -1,0 +1,52 @@
+﻿Structure du dossier pour le volume Windows
+Le numÚro de sÚrie du volume est 2AFD-69FB
+C:.
+ª   404.php
+ª   arbo.txt
+ª   archive.php
+ª   comments.php
+ª   footer.php
+ª   functions.php
+ª   header.php
+ª   home.php
+ª   index.php
+ª   page.php
+ª   screenshot.png
+ª   search.php
+ª   single.php
+ª   style.css
+ª   template-hob-default.php
+ª   template-hob-fullwidth.php
+ª   
++---assets
+ª   +---css
+ª   ª       critical.css
+ª   ª       fonts.css
+ª   ª       header.css
+ª   ª       main.css
+ª   ª       
+ª   +---fonts
+ª           montserrat-v30-latin-500.woff2
+ª           montserrat-v30-latin-600.woff2
+ª           montserrat-v30-latin-700.woff2
+ª           montserrat-v30-latin-italic.woff2
+ª           montserrat-v30-latin-regular.woff2
+ª           
++---includes
+ª       cleanup.php
+ª       svg-icons.php
+ª       
++---template-parts
+    +---blog
+    ª       blog-content-none.php
+    ª       blog-content.php
+    ª       
+    +---content
+    ª       content.php
+    ª       
+    +---footer
+    ª       site-footer.php
+    ª       
+    +---header
+            site-header.php
+            

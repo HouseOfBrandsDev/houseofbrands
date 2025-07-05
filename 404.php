@@ -16,7 +16,7 @@ get_header();
     <section class="error-404 not-found">
 
         <header class="page-header">
-            <h1 class="page-title">
+            <h1 class="hob-page-title">
                 <?php esc_html_e( 'Oups ! La page que vous cherchez est introuvable.', 'houseofbrands' ); ?>
             </h1>
         </header><!-- .page-header -->
