@@ -174,12 +174,39 @@
 
 /* Affiche le bouton menu uniquement sur mobile */
 @media (max-width: 1024px) {
+ .hob-header__nav {
+    display: none;
+  }
   .hob-menu-toggle {
     display: inline-flex;
     align-items: center;
     justify-content: center;
   }
-  .hob-header__nav {
-display: none;
+ 
+.hob-icon--menu {
+  width: 24px;
+  height: auto;
+  overflow: visible;
+
 }
+
+
+.hob-icon--menu .bar {
+  transform-box: fill-box;
+  -webkit-transform-box: fill-box;/* Safari */
+  transform-origin: center center;
+  transition: transform .3s ease, opacity .3s ease;
+}
+/* ÉTAT OUVERT : on masque la barre du milieu… */
+.mobile-menu-opened .bar--middle {
+  opacity: 0;
+}
+/* … et on recentre + tourne les deux autres barres */
+.mobile-menu-opened .bar--top {
+  transform: translateY(-9.335px) rotate(45deg);
+}
+.mobile-menu-opened .bar--bottom {
+  transform: translateY(6.665px)  rotate(-45deg);
+}
+
 }

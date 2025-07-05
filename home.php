@@ -11,7 +11,7 @@ get_header(); ?>
 
   <?php if ( have_posts() ) : ?>
 
-    <header class="page-header u-text-center u-mb">
+    <header class="page-header blog">
       <h1 class="page-title"><?php esc_html_e( 'Nos derniers articles', 'houseofbrands' ); ?></h1>
     </header><!-- .page-header -->
 

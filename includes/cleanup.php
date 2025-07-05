@@ -5,6 +5,10 @@
  * @package HouseOfBrands
  */
 
+// Ne pas exécuter en direct
+defined( 'ABSPATH' ) || exit;
+
+
 // Désactive les scripts et styles emoji
 remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
 remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );

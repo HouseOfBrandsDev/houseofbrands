@@ -4,14 +4,26 @@
  * @package HouseOfBrands
  */
 
+ // Ne pas exécuter en direct
+defined( 'ABSPATH' ) || exit;
+
 // Tableau associatif des SVG (clé => nom logique, valeur => code SVG inline)
 function hob_get_svg_icons() {
     return [
         'menu' => '
-                <svg class="hob-icon hob-icon--menu" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 18.67">
-                <path class="cls-1" d="M216,260.21H194.67a1.34,1.34,0,1,1,0-2.67H216a1.34,1.34,0,0,1,0,2.67Z" transform="translate(-193.33 -241.54)"/>
-                <path class="cls-1" d="M216,252.21H194.67a1.34,1.34,0,1,1,0-2.67H216a1.34,1.34,0,0,1,0,2.67Z" transform="translate(-193.33 -241.54)"/>
-                <path class="cls-1" d="M216,244.21H194.67a1.34,1.34,0,1,1,0-2.67H216a1.34,1.34,0,0,1,0,2.67Z" transform="translate(-193.33 -241.54)"/>
+            <svg class="hob-icon hob-icon--menu" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 18.67">
+              <g class="bars" transform="translate(-193.33 -241.54)">
+                <path class="bar bar--top" d="M216,260.21H194.67a1.34,1.34,0,1,1,0-2.67H216a1.34,1.34,0,0,1,0,2.67Z"/>
+                <path class="bar bar--middle" d="M216,252.21H194.67a1.34,1.34,0,1,1,0-2.67H216a1.34,1.34,0,0,1,0,2.67Z"/>
+                <path class="bar bar--bottom" d="M216,244.21H194.67a1.34,1.34,0,1,1,0-2.67H216a1.34,1.34,0,0,1,0,2.67Z"/>
+            </g>
+            </svg>
+
+        ',
+        'menu-close' => '
+            <svg class="hob-icon hob-icon--menu-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path class="cls-1" d="M449.1,242l-20.4,20.39a1.79,1.79,0,0,1-2.55,0,1.81,1.81,0,0,1,0-2.55l20.4-20.39A1.8,1.8,0,1,1,449.1,242Z" transform="translate(-425.62 -238.87)"/>
+                <path class="cls-1" d="M446.55,262.34,426.15,242a1.8,1.8,0,1,1,2.55-2.55l20.4,20.39a1.81,1.81,0,0,1,0,2.55A1.79,1.79,0,0,1,446.55,262.34Z" transform="translate(-425.62 -238.87)"/>
             </svg>
 
         ',

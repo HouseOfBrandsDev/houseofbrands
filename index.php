@@ -22,7 +22,7 @@ get_header();
       )
     ); ?>
   <?php else : ?>
-    <?php get_template_part( 'template-parts/content/content', 'none' ); ?>
+    <?php get_template_part( 'template-parts/content/content' ); ?>
   <?php endif; ?>
 </main>
 
