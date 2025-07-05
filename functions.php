@@ -44,10 +44,6 @@ function houseofbrands_setup() {
 add_action( 'after_setup_theme', 'houseofbrands_setup' );
 
 
-
-
-
-
 // Dans votre functions.php, après l'initialisation du thème :
 function houseofbrands_add_woocommerce_support() {
     add_theme_support( 'woocommerce' );
