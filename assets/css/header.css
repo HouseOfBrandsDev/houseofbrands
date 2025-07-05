@@ -29,7 +29,6 @@
 .hob-header {
   background-color: #fff;
   border-bottom: 1px solid #eee;
-  padding: 1rem 0;
   position: relative;
   z-index: 100;
 }
@@ -37,7 +36,7 @@
 .hob-header__inner {
 
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -70,8 +69,7 @@
 .hob-header {
   position: relative;
   background: #fff;
-  padding: 1rem 0;
-  border-bottom: 1px solid #eee;
+  
 }
 
 .hob-header__inner {
@@ -79,6 +77,8 @@
   justify-content: space-between;
   align-items: center;
   position: relative;
+  background: #fff;.
+  border-bottom: 1px solid #eee;
 }
 
 .hob-header__logo,
@@ -164,15 +164,19 @@
 /* ------------------------------------------
    Responsive
 ------------------------------------------ */
-@media (max-width: 768px) {
 
 
+
+/* —— Desktop : on désactive le container du mobile au cas où sur ordinateur—— */
+@media (min-width: 1025px) {
+  #hob-mobile-menu-container {
+    display: none;
+  }
 }
 
 
+/* Gestion menu mobile : Masquage du menu ordinateur, affichage du bouton de menu mobile, animation du clic sur le bouton*/
 
-
-/* Affiche le bouton menu uniquement sur mobile */
 @media (max-width: 1024px) {
  .hob-header__nav {
     display: none;
@@ -190,10 +194,16 @@
 
 }
 
+.mobile-menu-opened .hob-icon--menu {
+  width: 24px;
+  height: auto;
+  overflow: visible;
+z-index: 999;
+}
 
 .hob-icon--menu .bar {
   transform-box: fill-box;
-  -webkit-transform-box: fill-box;/* Safari */
+  -webkit-transform-box: fill-box;
   transform-origin: center center;
   transition: transform .3s ease, opacity .3s ease;
 }
@@ -209,4 +219,81 @@
   transform: translateY(6.665px)  rotate(-45deg);
 }
 
+
+
+/* 1) Prépare le header comme ancre */
+.hob-header {
+  position: relative;
+  z-index: 99;
 }
+
+.hob-header__inner{
+  position: relative;
+  z-index: 100;
+}
+
+/* 2) Drawer full-screen, hors vue par défaut */
+#hob-mobile-menu-container {
+  --hob-header-height: 0px;        /* initialisé par le JS */
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100vh;
+  background: #fff;
+  overflow-y: auto;
+  pointer-events: none;
+  z-index: 99;
+
+  /* On le remonte complètement */
+  transform: translateY(calc(-100% + var(--hob-header-height)));
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* 3) État ouvert : descend juste sous le header */
+#hob-mobile-menu-container.mobile-menu-opened {
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* 4) Liste mobile : slide + fade */
+.hob-menu-mobile {
+  list-style: none;
+  margin: 0;
+  padding: 2rem;
+}
+.hob-menu-mobile li {
+  opacity: 0;
+  transform: translateY(20px);
+  /* on animera via transition-delay */
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.hob-menu-mobile li a {
+  display: block;
+  padding: .75rem 0;
+  font-size: 1.25rem;
+  color: #111;
+  text-decoration: none;
+}
+
+/* 5) Sous-menus indentés */
+.hob-menu-mobile .sub-menu {
+  padding-left: 1.5rem;
+  margin-top: .5rem;
+}
+
+/* 6) À l’ouverture, on déclenche les transitions en cascade */
+#hob-mobile-menu-container.mobile-menu-opened .hob-menu-mobile li {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* Stagger via delay */
+.hob-menu-mobile li:nth-child(1) { transition-delay: 0.05s; }
+.hob-menu-mobile li:nth-child(2) { transition-delay: 0.10s; }
+.hob-menu-mobile li:nth-child(3) { transition-delay: 0.15s; }
+/* etc. */
+
+
+
+
+
+}
+

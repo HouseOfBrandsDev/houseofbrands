@@ -1,3 +1,4 @@
+// Toggle du bouton : Écoute du bouton de menu et au clic, injecte le menu mobile dans la div présente dans le header et ajoute des classes pour une selection css
 document.addEventListener('DOMContentLoaded', function() {
   const btn             = document.querySelector('.hob-menu-toggle');
   const container       = document.getElementById('hob-mobile-menu-container');
@@ -29,4 +30,22 @@ document.addEventListener('DOMContentLoaded', function() {
       body.classList.add('mobile-menu-opened');
     }
   });
+});
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  const container = document.getElementById('hob-mobile-menu-container');
+  const header    = document.querySelector('.hob-header');
+
+  if (!container || !header) return;
+
+  // Met à jour la variable CSS --hob-header-height
+  function updateHeaderHeight() {
+    const height = header.getBoundingClientRect().height;
+    container.style.setProperty('--hob-header-height', height + 'px');
+  }
+
+  // Initial + sur redimensionnement
+  updateHeaderHeight();
+  window.addEventListener('resize', updateHeaderHeight);
 });
